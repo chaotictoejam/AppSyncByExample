@@ -1,0 +1,13 @@
+#set($id = $ctx.args.id)
+
+{
+  "version": "2018-05-29",
+  "operation": "DeleteItem",
+  "key": {
+    "PK": $util.dynamodb.toDynamoDBJson("AUTHOR#${id}"),
+    "SK": $util.dynamodb.toDynamoDBJson("AUTHOR#${id}"),
+  },
+  "condition": {
+    "expression": "attribute_exists(PK)"
+  }
+}

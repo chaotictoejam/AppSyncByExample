@@ -1,0 +1,29 @@
+#set($args = $ctx.args)
+#set($id = $args.id)
+#set($name = $args.name)
+#set($bio = $args.bio)
+
+{
+  "version": "2018-05-29",
+  "operation": "UpdateItem",
+  "key": {
+    "PK": "AUTHOR#$id",
+    "SK": "AUTHOR#$id"
+  },
+  "update": {
+    "expression": "SET #n = :name, #b = :bio, #u = :updatedDate",
+    "expressionNames": {
+      "#n": "name",
+      "#b": "bio",
+      "#u": "updatedDate"
+    },
+    "expressionValues": {
+      ":title": $util.dynamodb.toString($title),
+      ":publicationDate": $util.dynamodb.toString($publicationDate)
+      ":updatedDate": $util.dynamodb.toDynamoDBJson($util.time.nowISO8601()),
+    }
+  },
+  "condition": {
+    "expression": "attribute_exists(PK)"
+  }
+}

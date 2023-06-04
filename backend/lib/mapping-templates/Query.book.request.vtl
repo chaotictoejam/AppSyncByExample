@@ -1,0 +1,10 @@
+#set($id = $ctx.args.id)
+
+{
+  "version": "2018-05-29",
+  "operation": "GetItem",
+  "key": {
+    "PK": $util.dynamodb.toDynamoDBJson("BOOK#${id}"),
+    "SK": $util.dynamodb.toDynamoDBJson("BOOK#${id}"),
+  }
+}

@@ -1,0 +1,84 @@
+service: library-catalog-api
+
+plugins:
+  - serverless-appsync-plugin
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1 # Change to your desired AWS region
+  stage: dev
+
+appSync:
+  name: library-api
+  authentication:
+    type: API_KEY
+  schema: ./lib/schema.graphql
+
+  resolvers:
+    Query.author:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Query.author.request.vtl
+      response: ./lib/mapping-templates/Query.author.response.vtl
+    Mutation.createAuthor:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.createAuthor.request.vtl
+      response: ./lib/mapping-templates/Mutation.createAuthor.response.vtl
+    Mutation.updateAuthor:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.updateAuthor.request.vtl
+      response: ./lib/mapping-templates/Mutation.updateAuthor.response.vtl
+    Mutation.deleteAuthor:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.deleteAuthor.request.vtl
+      response: ./lib/mapping-templates/Mutation.deleteAuthor.response.vtl
+    Query.book:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Query.book.request.vtl
+      response: ./lib/mapping-templates/Query.book.response.vtl
+    Mutation.createBook:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.createBook.request.vtl
+      response: ./lib/mapping-templates/Mutation.createBook.response.vtl
+    Mutation.updateBook:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.updateBook.request.vtl
+      response: ./lib/mapping-templates/Mutation.updateBook.response.vtl
+    Mutation.deleteBook:
+      kind: UNIT
+      dataSource: library
+      request: ./lib/mapping-templates/Mutation.deleteBook.request.vtl
+      response: ./lib/mapping-templates/Mutation.deleteBook.response.vtl
+
+  dataSources:
+    library:
+      type: AMAZON_DYNAMODB
+      config:
+        tableName: ${sls:stage}-librarycatalog
+        
+resources: # CloudFormation template syntax from here on.
+  Resources:
+    LibraryCatalogTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${sls:stage}-librarycatalog
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
