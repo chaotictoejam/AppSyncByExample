@@ -15,6 +15,20 @@ appSync:
     type: API_KEY
   schema: ./lib/schema.graphql
 
+  pipelineFunctions:
+    getAuthor:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/Function.getAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/Function.getAuthor.response.vtl
+    createAuthorBook:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/Function.createAuthorBook.request.vtl
+      response: ./lib/mapping-templates/functions/Function.createAuthorBook.response.vtl
+    createBookAuthor:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/Function.createBookAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/Function.createBookAuthor.response.vtl
+
   resolvers:
     Query.author:
       kind: UNIT
@@ -42,10 +56,13 @@ appSync:
       request: ./lib/mapping-templates/Query.book.request.vtl
       response: ./lib/mapping-templates/Query.book.response.vtl
     Mutation.createBook:
-      kind: UNIT
-      dataSource: library
-      request: ./lib/mapping-templates/Mutation.createBook.request.vtl
-      response: ./lib/mapping-templates/Mutation.createBook.response.vtl
+      kind: PIPELINE
+      request: ./lib/mapping-templates/Pipeline/Pipeline.createBook.before.vtl
+      response: ./lib/mapping-templates/Pipeline/Pipeline.createBook.after.vtl
+      functions:
+        - getAuthor
+        - createBookAuthor
+        - createAuthorBook
     Mutation.updateBook:
       kind: UNIT
       dataSource: library
