@@ -1,0 +1,24 @@
+#set($id = $ctx.stash.get("id"))
+#set($title = $ctx.stash.get("title"))
+#set($authorId = $ctx.stash.get("authorId"))
+#set($publicationDate = $ctx.stash.get("publicationDate"))
+#set($description = $ctx.stash.get("description"))
+#set($createdDate = $ctx.stash.get("createdDate"))
+
+{
+    "version" : "2018-05-29",
+    "operation" : "PutItem",
+    "key" : {
+        "PK": $util.dynamodb.toDynamoDBJson("AUTHOR#${authorId}"),
+        "SK": $util.dynamodb.toDynamoDBJson("BOOK#${id}"),
+    },
+    "attributeValues" : {
+        "_TYPE": $util.dynamodb.toDynamoDBJson("BOOK"),
+    	"id": $util.dynamodb.toDynamoDBJson($id),
+        "title": $util.dynamodb.toDynamoDBJson($title),
+        "publishDate": $util.dynamodb.toDynamoDBJson($publishDate),
+        "authorId": $util.dynamodb.toDynamoDBJson($authorId),
+        "description": $util.dynamodb.toDynamoDBJson($description),
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+    }
+}

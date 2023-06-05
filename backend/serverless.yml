@@ -18,24 +18,24 @@ appSync:
   pipelineFunctions:
     getAuthor:
       dataSource: library
-      request: ./lib/mapping-templates/functions/Function.getAuthor.request.vtl
-      response: ./lib/mapping-templates/functions/Function.getAuthor.response.vtl
+      request: ./lib/mapping-templates/functions/getAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/getAuthor.response.vtl
     createAuthorBook:
       dataSource: library
-      request: ./lib/mapping-templates/functions/Function.createAuthorBook.request.vtl
-      response: ./lib/mapping-templates/functions/Function.createAuthorBook.response.vtl
+      request: ./lib/mapping-templates/functions/createAuthorBook.request.vtl
+      response: ./lib/mapping-templates/functions/createAuthorBook.response.vtl
     createBookAuthor:
       dataSource: library
-      request: ./lib/mapping-templates/functions/Function.createBookAuthor.request.vtl
-      response: ./lib/mapping-templates/functions/Function.createBookAuthor.response.vtl
+      request: ./lib/mapping-templates/functions/createBookAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/createBookAuthor.response.vtl
     updateAuthorBook:
       dataSource: library
-      request: ./lib/mapping-templates/functions/Function.updateAuthorBook.request.vtl
-      response: ./lib/mapping-templates/functions/Function.updateAuthorBook.response.vtl
+      request: ./lib/mapping-templates/functions/updateAuthorBook.request.vtl
+      response: ./lib/mapping-templates/functions/updateAuthorBook.response.vtl
     updateBookAuthor:
       dataSource: library
-      request: ./lib/mapping-templates/functions/Function.updateBookAuthor.request.vtl
-      response: ./lib/mapping-templates/functions/Function.updateBookAuthor.response.vtl
+      request: ./lib/mapping-templates/functions/updateBookAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/updateBookAuthor.response.vtl
 
   resolvers:
     Query.author:
