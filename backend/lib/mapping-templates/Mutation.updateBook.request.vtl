@@ -3,27 +3,31 @@
 #set($title = $args.title)
 #set($authorId = $args.authorId)
 #set($publicationDate = $args.publicationDate)
+#set($description = $args.description)
+#set($updatedDate = $util.time.nowISO8601())
 
 {
   "version": "2018-05-29",
   "operation": "UpdateItem",
   "key": {
-    "PK": "AUTHOR#$authorId",
-    "SK": "BOOK#$id"
+    "PK": $util.dynamodb.toDynamoDBJson("AUTHOR#${ctx.args.authorId}"),
+    "SK": $util.dynamodb.toDynamoDBJson("BOOK#${id}"),
   },
   "update": {
-    "expression": "SET #t = :title, #a = :authorId, #p = :publicationDate, #u = :updatedDate",
+    "expression": "SET #t = :title, #a = :authorId, #p = :publicationDate, #d = :description, #u = :updatedDate",
     "expressionNames": {
       "#t": "title",
       "#a": "authorId",
-      "#p": "publicationDate"
+      "#p": "publicationDate",
+      "#d": "description",
       "#u": "updatedDate"
     },
     "expressionValues": {
-      ":title": $util.dynamodb.toString($title),
-      ":authorId": $util.dynamodb.toString($authorId),
-      ":publicationDate": $util.dynamodb.toString($publicationDate)
-      ":updatedDate": $util.dynamodb.toDynamoDBJson($util.time.nowISO8601()),
+      ":title": $util.dynamodb.toDynamoDBJson($title),
+      ":authorId": $util.dynamodb.toDynamoDBJson($authorId),
+      ":publicationDate": $util.dynamodb.toDynamoDBJson($publicationDate),
+      ":description": $util.dynamodb.toDynamoDBJson($description),
+      ":updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
     }
   },
   "condition": {

@@ -1,1 +1,17 @@
-$utils.toJson($ctx.result)
+#if($ctx.results.items.size() == 0)
+    #return
+#end
+
+#set($author = {})
+#set($books = [])
+#foreach($item in $ctx.result.items)
+    #if($item["_TYPE"] == "AUTHOR")
+        #set ($author = $item)
+    #elseif($item["_TYPE"] == "BOOK")
+        $util.qr($books.add($item))
+    #end
+#end
+
+$util.qr($author.put("books", $books))
+
+$util.toJson($author)

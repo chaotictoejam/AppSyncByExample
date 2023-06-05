@@ -22,9 +22,10 @@ type Mutation {
   ): Book!
   updateBook(
     id: ID!
-    title: String
-    authorId: ID
+    title: String!
+    authorId: ID!
     publicationDate: String
+    description: String
   ): Book!
   deleteBook(id: ID!): Book
   createAuthor(name: String!, bio: String): Author!
