@@ -65,16 +65,16 @@ appSync:
       response: ./lib/mapping-templates/Query.book.response.vtl
     Mutation.createBook:
       kind: PIPELINE
-      request: ./lib/mapping-templates/pipelines/Pipeline.createBook.before.vtl
-      response: ./lib/mapping-templates/pipelines/Pipeline.createBook.after.vtl
+      request: ./lib/mapping-templates/pipelines/createBook.before.vtl
+      response: ./lib/mapping-templates/pipelines/createBook.after.vtl
       functions:
         - getAuthor
         - createBookAuthor
         - createAuthorBook
     Mutation.updateBook:
       kind: PIPELINE
-      request: ./lib/mapping-templates/pipelines/Pipeline.updateBook.before.vtl
-      response: ./lib/mapping-templates/pipelines/Pipeline.updateBook.after.vtl
+      request: ./lib/mapping-templates/pipelines/updateBook.before.vtl
+      response: ./lib/mapping-templates/pipelines/updateBook.after.vtl
       functions:
         - getAuthor
         - updateBookAuthor
