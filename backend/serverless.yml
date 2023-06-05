@@ -28,6 +28,14 @@ appSync:
       dataSource: library
       request: ./lib/mapping-templates/functions/Function.createBookAuthor.request.vtl
       response: ./lib/mapping-templates/functions/Function.createBookAuthor.response.vtl
+    updateAuthorBook:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/Function.updateAuthorBook.request.vtl
+      response: ./lib/mapping-templates/functions/Function.updateAuthorBook.response.vtl
+    updateBookAuthor:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/Function.updateBookAuthor.request.vtl
+      response: ./lib/mapping-templates/functions/Function.updateBookAuthor.response.vtl
 
   resolvers:
     Query.author:
@@ -64,10 +72,13 @@ appSync:
         - createBookAuthor
         - createAuthorBook
     Mutation.updateBook:
-      kind: UNIT
-      dataSource: library
-      request: ./lib/mapping-templates/Mutation.updateBook.request.vtl
-      response: ./lib/mapping-templates/Mutation.updateBook.response.vtl
+      kind: PIPELINE
+      request: ./lib/mapping-templates/pipelines/Pipeline.updateBook.before.vtl
+      response: ./lib/mapping-templates/pipelines/Pipeline.updateBook.after.vtl
+      functions:
+        - getAuthor
+        - updateBookAuthor
+        - updateAuthorBook
     Mutation.deleteBook:
       kind: UNIT
       dataSource: library

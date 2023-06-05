@@ -1,0 +1,30 @@
+#set($id = $ctx.stash.get("id"))
+#set($authorId = $ctx.stash.get("authorId"))
+#set($author = $ctx.stash.get("author"))
+
+{
+  "version": "2018-05-29",
+  "operation": "UpdateItem",
+  "key": {
+    "PK": $util.dynamodb.toDynamoDBJson("BOOK#${id}"),
+    "SK": $util.dynamodb.toDynamoDBJson("AUTHOR#${authorId}"),
+  },
+  "update": {
+    "expression": "SET #id = :authorId, #n = :name, #b = :bio, #u = :updatedDate",
+    "expressionNames": {
+      "#id": "authorId",
+      "#n": "name",
+      "#b": "bio",
+      "#u": "updatedDate"
+    },
+    "expressionValues": {
+      ":authorId": $util.dynamodb.toDynamoDBJson($authorId),
+      ":name": $util.dynamodb.toDynamoDBJson($name),
+      ":bio": $util.dynamodb.toDynamoDBJson($bio),
+      ":updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+    }
+  },
+  "condition": {
+    "expression": "attribute_exists(PK)"
+  }
+}
