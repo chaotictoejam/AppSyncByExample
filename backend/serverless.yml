@@ -57,8 +57,8 @@ appSync:
       response: ./lib/mapping-templates/Query.book.response.vtl
     Mutation.createBook:
       kind: PIPELINE
-      request: ./lib/mapping-templates/Pipeline/Pipeline.createBook.before.vtl
-      response: ./lib/mapping-templates/Pipeline/Pipeline.createBook.after.vtl
+      request: ./lib/mapping-templates/pipelines/Pipeline.createBook.before.vtl
+      response: ./lib/mapping-templates/pipelines/Pipeline.createBook.after.vtl
       functions:
         - getAuthor
         - createBookAuthor
