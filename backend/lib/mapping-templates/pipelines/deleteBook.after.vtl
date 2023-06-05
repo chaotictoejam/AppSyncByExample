@@ -1,0 +1,10 @@
+$util.qr($ctx.stash.put("id", $ctx.args.id))
+$util.qr($ctx.stash.put("title", $ctx.args.title))
+$util.qr($ctx.stash.put("publishDate", $ctx.args.publishDate))
+$util.qr($ctx.stash.put("authorId", $ctx.args.authorId))
+$util.qr($ctx.stash.put("description", $ctx.args.description))
+$util.qr($ctx.stash.put("updatedDate", $util.time.nowISO8601()))
+$util.qr($ctx.stash.put("deletedDate", $util.time.nowISO8601()))
+
+{
+}

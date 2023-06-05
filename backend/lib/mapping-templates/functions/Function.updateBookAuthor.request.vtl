@@ -1,6 +1,8 @@
 #set($id = $ctx.stash.get("id"))
 #set($authorId = $ctx.stash.get("authorId"))
 #set($author = $ctx.stash.get("author"))
+#set($updatedDate = $ctx.stash.get("updatedDate"))
+#set($deletedDate = $ctx.stash.get("deletedDate"))
 
 {
   "version": "2018-05-29",
@@ -10,18 +12,20 @@
     "SK": $util.dynamodb.toDynamoDBJson("AUTHOR#${authorId}"),
   },
   "update": {
-    "expression": "SET #id = :authorId, #n = :name, #b = :bio, #u = :updatedDate",
+    "expression": "SET #id = :authorId, #n = :name, #b = :bio, #u = :updatedDate, #del = :deletedDate",
     "expressionNames": {
       "#id": "authorId",
       "#n": "name",
       "#b": "bio",
-      "#u": "updatedDate"
+      "#u": "updatedDate",
+      "#del": "deletedDate"
     },
     "expressionValues": {
       ":authorId": $util.dynamodb.toDynamoDBJson($authorId),
       ":name": $util.dynamodb.toDynamoDBJson($name),
       ":bio": $util.dynamodb.toDynamoDBJson($bio),
       ":updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+      ":deletedDate": $util.dynamodb.toDynamoDBJson($deletedDate),
     }
   },
   "condition": {

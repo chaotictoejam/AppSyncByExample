@@ -80,10 +80,13 @@ appSync:
         - updateBookAuthor
         - updateAuthorBook
     Mutation.deleteBook:
-      kind: UNIT
-      dataSource: library
-      request: ./lib/mapping-templates/Mutation.deleteBook.request.vtl
-      response: ./lib/mapping-templates/Mutation.deleteBook.response.vtl
+      kind: PIPELINE
+      request: ./lib/mapping-templates/pipelines/deleteBook.before.vtl
+      response: ./lib/mapping-templates/pipelines/deleteBook.after.vtl
+      functions:
+        - getAuthor
+        - updateBookAuthor
+        - updateAuthorBook
 
   dataSources:
     library:
