@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@aws-appsync/eslint-plugin": "^1.2.1",
-    "@aws-appsync/utils": "^1.2.5",
+    "@aws-appsync/utils": "^1.2.5"
+  },
+  "devDependencies": {
     "serverless-appsync-plugin": "^2.2.1"
   }
 }
