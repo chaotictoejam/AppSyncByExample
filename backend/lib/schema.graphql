@@ -35,9 +35,9 @@ type Mutation {
 
 type Query {
   book(id: ID!): Book
-  books: [Book!]!
+  books: [Book!]
   author(id: ID!): Author
-  authors: [Author!]!
+  authors: [Author!]
 }
 
 schema {

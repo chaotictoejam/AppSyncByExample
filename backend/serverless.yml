@@ -20,6 +20,10 @@ appSync:
       dataSource: library
       request: ./lib/mapping-templates/functions/getAuthor.request.vtl
       response: ./lib/mapping-templates/functions/getAuthor.response.vtl
+    createBook:
+      dataSource: library
+      request: ./lib/mapping-templates/functions/createBook.request.vtl
+      response: ./lib/mapping-templates/functions/createBook.response.vtl
     createAuthorBook:
       dataSource: library
       request: ./lib/mapping-templates/functions/createAuthorBook.request.vtl
@@ -69,6 +73,7 @@ appSync:
       response: ./lib/mapping-templates/pipelines/createBook.after.vtl
       functions:
         - getAuthor
+        - createBook
         - createBookAuthor
         - createAuthorBook
     Mutation.updateBook:
