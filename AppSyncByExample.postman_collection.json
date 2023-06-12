@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "5c077460-3c0f-494b-a839-1dbf949ed2a2",
+		"name": "AppSync By Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "152110"
+	},
+	"item": [
+		{
+			"name": "CreateAuthor",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateAuthor {\r\n  createAuthor(name: \"John Smith\", bio: \"Some dude called John Smith\") {\r\n    id\r\n    name\r\n    bio\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAuthor",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation UpdateAuthor {\r\n  updateAuthor(id: \"01H227XVG868DEQW70EX4F7KS1\", name: \"John Smith\", bio: \"Some dude called John Smith\") {\r\n    id\r\n    name\r\n    bio\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAuthor",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation DeleteAuthor {\r\n  deleteAuthor(id: \"01H24MM0HBKFRBB5CJ6QAZ4PEA\") {\r\n    id\r\n    name\r\n    bio\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAuthor",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetAuthor {\r\n  author(id:\"01H227XVG868DEQW70EX4F7KS1\") {\r\n    id\r\n    name\r\n    bio\r\n    books {\r\n        title\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBook",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateBook {\r\n  createBook(authorId: \"01H227XVG868DEQW70EX4F7KS1\", title: \"John Smith Book 2\") {\r\n    id\r\n    title\r\n    description\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBook",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation UpdateBook {\r\n  updateBook(id: \"01H26E5Y9FBSTCXSCVEJVNJ8Q9\", authorId: \"01H227XVG868DEQW70EX4F7KS1\", title: \"Cats\", publicationDate: \"1/1/1900\", description: \"Kitty cat\") {\r\n    id\r\n    title\r\n    description\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBook",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetBook {\r\n  book(id: \"01H228HFVWYPK9GTZ49SD4DXDA\") {\r\n    id\r\n    title\r\n    description\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBook",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "[INSERT KEY HERE]",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "[INSERT KEY HERE]",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateBook {\r\n  deleteBook(id: \"01H227XVG868DEQW70EX4F7KS1\") {\r\n    id\r\n    title\r\n    description\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://[API NAME].appsync-api.us-east-1.amazonaws.com/graphql",
+					"protocol": "https",
+					"host": [
+						"[API NAME]",
+						"appsync-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
